@@ -1,0 +1,19 @@
+{
+  "name": "hungry-hour",
+  "version": "1.0.0",
+  "description": "HungryHour is your go-to app for quick and convenient food ordering. Satisfy your cravings with ease, any time of the day.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "Ayush Raj",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  }
+}
