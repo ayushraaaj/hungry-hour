@@ -1,12 +1,4 @@
-.res-card {
-  width: 250px;
-  padding: 10px 25px;
-  background-color: #e4dada;
-  margin: 38px;
-  cursor: pointer;
-}
-
-.res-card:hover{
+.res-card:hover {
   box-shadow: 0 0 5px;
   transform: scale(1.05);
 }

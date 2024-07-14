@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.shimmer-card,
+.res-card {
+  width: 250px;
+  padding: 10px 25px;
+  background-color: #e4dada;
+  margin: 38px;
+  cursor: pointer;
+}
+
+.shimmer-container,
+.res-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}

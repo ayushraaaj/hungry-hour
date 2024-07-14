@@ -1,13 +1,15 @@
 import "./RestaurantCard.css";
+import { image_url } from "../../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { name, imageURL, costForTwo, cuisines, avgRating, areaName } =
-    resData?.data;
+  const { name, cloudinaryImageId, costForTwo, cuisines, avgRating, areaName } =
+    resData;
+
   return (
     <div className="res-card">
-      <img src={imageURL} alt={name} />
+      <img src={image_url + cloudinaryImageId} alt={name} />
       <h2>{name}</h2>
       <h3>Rating: {avgRating} stars</h3>
       <h4>{cuisines.join(", ")}</h4>
