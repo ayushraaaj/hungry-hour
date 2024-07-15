@@ -1,0 +1,29 @@
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu {
+  width: 60%;
+}
+
+.menu-text{
+    text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu ul li {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.price{
+    font-weight: bold;
+}

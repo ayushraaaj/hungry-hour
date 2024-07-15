@@ -1,20 +1,28 @@
+import { LOGO } from "../../utils/constants";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="logo">
         <img
-          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&txt_keyword=All"
-          alt="Namaste Food"
+          src={LOGO}
+          alt="hungry-hour"
         />
       </div>
 
       <div className="nav-list">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>About Us</Link>
+          </li>
+          <li>
+            <Link to={"/contact"}>Contact Us</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>

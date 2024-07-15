@@ -1,8 +1,9 @@
 import "./Body.css";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import { useEffect, useState } from "react";
-import { api_url } from "../../utils/constants";
+import { RES_API } from "../../utils/constants";
 import Shimmer from "../ShimmerCard/Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -12,8 +13,12 @@ const Body = () => {
 
   const [searchData, setSearchData] = useState("");
 
-  useEffect(async () => {
-    const data = await fetch(api_url);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(RES_API);
     const jsonData = await data.json();
 
     setListOfRestaurants(
@@ -25,7 +30,7 @@ const Body = () => {
       jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-  }, []);
+  };
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -85,10 +90,12 @@ const Body = () => {
       <div className="res-container">
         {filteredListOfRestaurants.map((restaurants) => {
           return (
-            <RestaurantCard
+            <Link
               key={restaurants?.info?.id}
-              resData={restaurants.info}
-            />
+              to={`/restaurant/${restaurants?.info?.id}`}
+            >
+              <RestaurantCard resData={restaurants.info} />
+            </Link>
           );
         })}
       </div>
