@@ -1,0 +1,12 @@
+.error{
+    text-align: center;
+}
+
+.error>h1{
+    margin-top: 150px;
+    font-size: 80px;
+}
+
+.error>p{
+    font-size: 25px;
+}
