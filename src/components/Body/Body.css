@@ -1,15 +1,25 @@
-.filter button {
-  margin: 20px;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 15px;
+.body {
+  width: 80%;
+  margin: auto;
 }
-
-.filter{
+.filter-container {
   display: flex;
 }
 
-.search > input{
-  padding: 10px;
-  font-size: 15px;
+.filter-container > div {
+  margin: 20px;
+}
+
+.filter-btn > button {
+  margin-right: 15px;
+}
+
+.search > button {
+  margin-left: 10px;
+}
+
+.search > input,
+.search > button,
+.filter-btn > button {
+  padding: 7px;
 }

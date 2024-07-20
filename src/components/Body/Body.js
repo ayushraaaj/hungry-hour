@@ -1,36 +1,28 @@
 import "./Body.css";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
-import { useEffect, useState } from "react";
-import { RES_API } from "../../utils/constants";
 import Shimmer from "../ShimmerCard/Shimmer";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../../utils/useRestaurantsList";
+import useOnlineStatus from "../../utils/useOnlineStatus";
+import Offline from "../Offline/Offline";
+import { useState } from "react";
+import ItemsNotFound from "../ItemsNotFound/ItemsNotFound";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState(
-    []
-  );
+  const [gotResult, setGotResult] = useState(true);
 
-  const [searchData, setSearchData] = useState("");
+  const {
+    listOfRestaurants,
+    filteredListOfRestaurants,
+    searchData,
+    setSearchData,
+    setFilteredListOfRestaurants,
+  } = useRestaurantList();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(RES_API);
-    const jsonData = await data.json();
-
-    setListOfRestaurants(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-
-    setFilteredListOfRestaurants(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  };
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return <Offline />;
+  }
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -50,8 +42,18 @@ const Body = () => {
       return nameMatches || cuisinesMatches;
     });
 
+    if (filteredList.length === 0) {
+      setGotResult(false);
+    } else {
+      setGotResult(true);
+    }
+
     setFilteredListOfRestaurants(filteredList);
   };
+
+  if (gotResult == false) {
+    return <ItemsNotFound name={searchData} />;
+  }
 
   const filterTopRatedRestaurants = () => {
     const filteredList = listOfRestaurants.filter((restaurants) => {
@@ -67,7 +69,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
+      <div className="filter-container">
         <div className="search">
           <input
             type="text"
@@ -78,13 +80,15 @@ const Body = () => {
           <button onClick={filterSearch}>Search</button>
         </div>
 
-        <button className="filter-btn" onClick={filterTopRatedRestaurants}>
-          Top Rated Restaurants
-        </button>
+        <div className="filter-btn">
+          <button className="filter-btn" onClick={filterTopRatedRestaurants}>
+            Top Rated Restaurants
+          </button>
 
-        <button className="reset-btn" onClick={resetFilter}>
-          Reset Filter
-        </button>
+          <button className="reset-btn" onClick={resetFilter}>
+            Reset Filter
+          </button>
+        </div>
       </div>
 
       <div className="res-container">
