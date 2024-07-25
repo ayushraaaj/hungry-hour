@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
+import Header from "./components/Header";
+import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import RestaurantMenu from "./components/RestaurantMenu/RestaturantMenu";
-import NotFound from "./components/NotFound/NotFound";
+import RestaurantMenu from "./components/RestaturantMenu";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (

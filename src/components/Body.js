@@ -1,12 +1,11 @@
-import "./Body.css";
-import RestaurantCard from "../RestaurantCard/RestaurantCard";
-import Shimmer from "../ShimmerCard/Shimmer";
+import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useRestaurantList from "../../utils/useRestaurantsList";
-import useOnlineStatus from "../../utils/useOnlineStatus";
-import Offline from "../Offline/Offline";
+import useRestaurantList from "../utils/useRestaurantsList";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import Offline from "./Offline";
 import { useState } from "react";
-import ItemsNotFound from "../ItemsNotFound/ItemsNotFound";
+import ItemsNotFound from "./ItemsNotFound";
 
 const Body = () => {
   const [gotResult, setGotResult] = useState(true);
@@ -68,30 +67,30 @@ const Body = () => {
   };
 
   return (
-    <div className="body">
-      <div className="filter-container">
+    <div>
+      <div className="flex justify-center mx-auto my-7">
         <div className="search">
-          <input
+          <input  className="outline-none border-gray-400 border-2 rounded-md py-0.5 px-2"
             type="text"
             placeholder="Type here..."
             value={searchData}
             onChange={(e) => setSearchData(e.target.value)}
           />
-          <button onClick={filterSearch}>Search</button>
+          <button className="bg-blue-500 p-2 rounded-lg ml-5" onClick={filterSearch}>Search</button>
         </div>
 
-        <div className="filter-btn">
-          <button className="filter-btn" onClick={filterTopRatedRestaurants}>
+        <div className="mx-5">
+          <button className="mx-5 bg-green-400 p-2 rounded-lg" onClick={filterTopRatedRestaurants}>
             Top Rated Restaurants
           </button>
 
-          <button className="reset-btn" onClick={resetFilter}>
+          <button className="bg-gray-400 p-2 rounded-lg" onClick={resetFilter}>
             Reset Filter
           </button>
         </div>
       </div>
 
-      <div className="res-container">
+      <div className="flex flex-wrap w-[80%] m-auto justify-center">
         {filteredListOfRestaurants.map((restaurants) => {
           return (
             <Link

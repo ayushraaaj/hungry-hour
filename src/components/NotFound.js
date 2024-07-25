@@ -1,5 +1,3 @@
-import "./NotFound.css";
-
 const NotFound = () => {
 
   return (

@@ -1,12 +1,10 @@
-import "./RestaturantMenu.css";
 import { useParams } from "react-router-dom";
-import Shimmer from "../ShimmerCard/Shimmer";
-import useRestaurantMenu from "../../utils/useRestaurantMenu";
-
+import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  
+
   const menu = useRestaurantMenu(resId);
 
   if (menu === null) {
